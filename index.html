@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kit de Moldes de Embalagens Personalizadas | 300+ Moldes Prontos pro Canva</title>
-<meta name="description" content="Mais de 300 moldes de embalagens prontos pra abrir no Canva, personalizar em minutos e imprimir. Ideal pra confeiteiras e doceiras que querem embalagens profissionais sem perder tempo.">
+<title>Acervo de Moldes para Kit Festa | +8.000 Moldes Prontos pra Editar e Imprimir</title>
+<meta name="description" content="Mais de 8.000 moldes de kit festa prontos pra editar no Canva, CorelDraw ou Silhouette, personalizar em minutos e imprimir. Caixinhas, toppers, convites, sacolinhas, rótulos, bandeirolas, topos de bolo e mais. Kit festa infantil e adulto.">
 <style>
 /* ================================================
    TOKENS
@@ -278,6 +278,35 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 .carousel-dot.active { background: var(--brand); }
 
 /* ================================================
+   SEÇÃO: CARROSSEL INFINITO
+   ================================================ */
+.infinite-carousel {
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+}
+.infinite-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-carousel 50s linear infinite;
+}
+.infinite-carousel:hover .infinite-track {
+  animation-play-state: paused;
+}
+.infinite-track img {
+  height: 280px;
+  width: auto;
+  border-radius: 14px;
+  flex-shrink: 0;
+  margin-right: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+@keyframes scroll-carousel {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ================================================
    SEÇÃO: O QUE VOCÊ VAI RECEBER
    ================================================ */
 .receive-grid {
@@ -305,26 +334,55 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 .receive-text span { font-size: 0.9375rem; color: var(--ink-soft); }
 
 /* ================================================
-   SEÇÃO: COMO FUNCIONA (3 passos)
+   SEÇÃO: COMO FUNCIONA (3 passos — cards com imagem)
    ================================================ */
 .steps {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
   counter-reset: step;
 }
 .step {
-  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px var(--glow);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
   counter-increment: step;
+  text-align: center;
 }
-.step-icon {
-  font-size: 2.75rem;
-  line-height: 1;
-  margin-bottom: 0.75rem;
-  display: block;
+.step-content {
+  flex: 1;
+}
+.step-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand), var(--brand-hover));
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.625rem;
+  flex-shrink: 0;
 }
 .step h3 { margin-bottom: 0.375rem; }
-.step p { font-size: 0.9375rem; color: var(--ink-soft); max-width: 280px; margin: 0 auto; }
+.step p { font-size: 0.9375rem; color: var(--ink-soft); max-width: 380px; margin: 0 auto; }
+.step-img {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
 
 /* ================================================
    SEÇÃO: COMPATIBILIDADE
@@ -644,34 +702,6 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 }
 
 /* ================================================
-   SEÇÃO: QUEM SOU EU
-   ================================================ */
-.about-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.25rem;
-}
-.about-photo {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  object-fit: cover;
-  border: 4px solid var(--brand);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-}
-.about-highlight {
-  font-size: 1.125rem;
-  font-weight: 800;
-  font-style: italic;
-  color: var(--brand);
-  border-left: 4px solid var(--brand);
-  padding-left: 0.875rem;
-}
-
-/* ================================================
    SEÇÃO: FAQ
    ================================================ */
 .faq-list { max-width: 640px; margin: 0 auto; }
@@ -916,6 +946,7 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 
 @media (prefers-reduced-motion: reduce) {
   .btn::after { animation: none; }
+  .infinite-track { animation: none; }
   .fade-in { opacity: 1; transform: none; transition: none; }
   .faq-answer { transition: none; }
   .faq-icon { transition: none; }
@@ -932,11 +963,12 @@ h3 { font-size: 1.125rem; font-weight: 700; }
   .hero { padding: 4rem 0 3.5rem; }
   .carousel-slide { flex: 0 0 42%; max-width: 380px; }
   .receive-grid { grid-template-columns: 1fr 1fr; }
-  .steps { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .step { flex-direction: row; text-align: left; padding: 2rem; }
+  .step-img { max-width: 240px; }
+  .step p { margin: 0; }
   .compat-list { grid-template-columns: 1fr 1fr; }
   .benefits-grid { grid-template-columns: 1fr 1fr; }
   .plans-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
-  .about-content { flex-direction: row; text-align: left; gap: 2rem; }
   .guarantee-content { flex-direction: row; text-align: left; }
 }
 </style>
@@ -957,11 +989,10 @@ h3 { font-size: 1.125rem; font-weight: 700; }
       <div class="popup-discount-badge">60% DE DESCONTO IMEDIATO!</div>
       <p class="popup-list-label">O que você libera ao atualizar:</p>
       <ul class="popup-checklist">
-        <li><span class="popup-check">&#10003;</span>+300 Moldes de Embalagens Prontos</li>
-        <li><span class="popup-check">&#10003;</span>Planilha de Precificação Inteligente</li>
-        <li><span class="popup-check">&#10003;</span>Videoaula Passo a Passo de Montagem</li>
-        <li><span class="popup-check">&#10003;</span>Coleção Especial para Datas Comemorativas</li>
-        <li><span class="popup-check">&#10003;</span>Modelos para Brindes e Lembrancinhas</li>
+        <li><span class="popup-check">&#10003;</span>+8.000 Moldes de Kit Festa Prontos</li>
+        <li><span class="popup-check">&#10003;</span>Coleção de Convites Editáveis</li>
+        <li><span class="popup-check">&#10003;</span>Coleção Especial Datas Comemorativas</li>
+        <li><span class="popup-check">&#10003;</span>Modelos de Lembrancinhas e Brindes</li>
         <li><span class="popup-check">&#10003;</span>Acesso Vitalício</li>
         <li><span class="popup-check">&#10003;</span>Garantia de 7 Dias</li>
       </ul>
@@ -984,40 +1015,49 @@ h3 { font-size: 1.125rem; font-weight: 700; }
      ================================================ -->
 <section class="hero" id="topo">
   <div class="container text-center">
-    <span class="eyebrow">Kit de Moldes de Embalagens</span>
-    <h1>+300 Moldes de Embalagens Prontos pra Abrir no Canva, Personalizar em Minutos e Entregar Junto com Seu Produto</h1>
-    <img src="hero-banner.png" alt="Exemplos de sacolas personalizadas" class="hero-banner" loading="eager">
-    <p class="sub">Sem criar nada do zero. Sem perder horas. É só abrir, personalizar e imprimir.</p>
+    <span class="eyebrow">Acervo de Moldes para Kit Festa</span>
+    <h1>Tenha um Acervo Completo de Moldes de Kit Festa pra Atender Qualquer Tema que o Cliente Pedir</h1>
+    <img src="images/plano-completo.png" alt="Acervo de +8.000 moldes de kit festa personalizados" class="hero-banner" loading="eager">
+    <p class="sub">+8.000 moldes de kit festa prontos pra editar no Canva, imprimir e entregar — sem criar nada do zero.</p>
     <a href="#planos" class="btn scroll-to-plans">QUERO MEUS MOLDES AGORA</a>
   </div>
 </section>
 
 
 <!-- ================================================
-     O DESAFIO DE QUEM TRABALHA
+     CARROSSEL INFINITO — prévia dos moldes
      ================================================ -->
-<section class="section fade-in">
-  <div class="container">
-    <h2>O desafio de quem trabalha com produto artesanal</h2>
-    <p class="text-muted text-center">Pare de perder venda por não ter a embalagem que o cliente pediu — cliente chama pedindo um estilo, uma cor, uma ocasião específica. Se você não tem pronto, perde tempo criando do zero ou deixa a venda passar.</p>
-  </div>
-</section>
-
-
-<!-- ================================================
-     PRÉVIA DO PRODUTO — carrossel de moldes
-     ================================================ -->
-<section class="section" id="previa">
+<section class="section fade-in" id="previa">
   <div class="container container--wide">
-    <h2>Veja alguns dos moldes do kit</h2>
-    <div class="carousel-track" id="previewCarousel">
-      <div class="carousel-slide"><img src="preview-1.png" alt="Sacola personalizada Jardim da Cecília" loading="lazy"></div>
-      <div class="carousel-slide"><img src="preview-2.png" alt="Sacola personalizada Âma Pedras e Cristais" loading="lazy"></div>
-      <div class="carousel-slide"><img src="preview-3.png" alt="Sacola personalizada iMake e acessórios" loading="lazy"></div>
-      <div class="carousel-slide"><img src="preview-4.png" alt="Sacola kraft personalizada Hella Moda Feminina" loading="lazy"></div>
-      <div class="carousel-slide"><img src="preview-5.png" alt="Sacola personalizada Lavin com laço" loading="lazy"></div>
+    <h2>Veja alguns dos moldes que você vai receber</h2>
+  </div>
+  <div class="infinite-carousel">
+    <div class="infinite-track">
+      <img src="https://sacolinhaslucrativa.lovable.app/__l5e/assets-v1/f5d190d0-33fa-429a-8783-537d85df2a93/carrossel-1.png" alt="Molde de kit festa 1" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/__l5e/assets-v1/2dd2ccc7-3225-4741-966f-302a64cdd368/carrossel-2.png" alt="Molde de kit festa 2" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/__l5e/assets-v1/c173d693-9c49-49ac-9447-a9db129cf891/carrossel-3.png" alt="Molde de kit festa 3" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/__l5e/assets-v1/4e1d766f-7f2f-4ca5-8c02-f5ad3fc4b3b8/carrossel-4.png" alt="Molde de kit festa 4" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-5-CmbnmsJd.jpg" alt="Molde de kit festa 5" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-6-BtEbmOlC.jpg" alt="Molde de kit festa 6" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-7-BxlHG1f1.jpg" alt="Molde de kit festa 7" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-8-B9c2xEnm.jpg" alt="Molde de kit festa 8" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-9-CDclnz4k.jpg" alt="Molde de kit festa 9" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-10-CocQqqKe.jpg" alt="Molde de kit festa 10" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-11-Ds02RNdv.jpg" alt="Molde de kit festa 11" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-12-DU7o2VpA.jpg" alt="Molde de kit festa 12" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/__l5e/assets-v1/f5d190d0-33fa-429a-8783-537d85df2a93/carrossel-1.png" alt="Molde de kit festa 1" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/__l5e/assets-v1/2dd2ccc7-3225-4741-966f-302a64cdd368/carrossel-2.png" alt="Molde de kit festa 2" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/__l5e/assets-v1/c173d693-9c49-49ac-9447-a9db129cf891/carrossel-3.png" alt="Molde de kit festa 3" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/__l5e/assets-v1/4e1d766f-7f2f-4ca5-8c02-f5ad3fc4b3b8/carrossel-4.png" alt="Molde de kit festa 4" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-5-CmbnmsJd.jpg" alt="Molde de kit festa 5" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-6-BtEbmOlC.jpg" alt="Molde de kit festa 6" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-7-BxlHG1f1.jpg" alt="Molde de kit festa 7" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-8-B9c2xEnm.jpg" alt="Molde de kit festa 8" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-9-CDclnz4k.jpg" alt="Molde de kit festa 9" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-10-CocQqqKe.jpg" alt="Molde de kit festa 10" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-11-Ds02RNdv.jpg" alt="Molde de kit festa 11" loading="lazy">
+      <img src="https://sacolinhaslucrativa.lovable.app/assets/carousel-12-DU7o2VpA.jpg" alt="Molde de kit festa 12" loading="lazy">
     </div>
-    <div class="carousel-dots" id="previewDots"></div>
   </div>
 </section>
 
@@ -1030,45 +1070,45 @@ h3 { font-size: 1.125rem; font-weight: 700; }
     <h2>O que você vai receber</h2>
     <div class="receive-grid">
       <div class="receive-item">
-        <div class="receive-icon">🎁</div>
+        <div class="receive-icon">🎉</div>
         <div class="receive-text">
-          <strong>+300 moldes prontos</strong>
-          <span>Organizados por categoria, prontos pra usar</span>
+          <strong>+8.000 moldes prontos organizados por tema</strong>
+          <span>Tudo separado por categoria, pronto pra usar</span>
         </div>
       </div>
       <div class="receive-item">
-        <div class="receive-icon">🎄</div>
+        <div class="receive-icon">👶</div>
         <div class="receive-text">
-          <strong>Datas comemorativas</strong>
-          <span>Natal, Páscoa, Dia das Mães, Junina e mais</span>
+          <strong>Kit festa infantil e adulto</strong>
+          <span>Temas pra todas as idades e ocasiões</span>
         </div>
       </div>
       <div class="receive-item">
-        <div class="receive-icon">🎀</div>
+        <div class="receive-icon">💌</div>
         <div class="receive-text">
-          <strong>Brindes e lembrancinhas</strong>
-          <span>Modelos pra kits e presentes prontos</span>
+          <strong>Convites editáveis</strong>
+          <span>Modelos prontos pra personalizar e entregar</span>
         </div>
       </div>
       <div class="receive-item">
-        <div class="receive-icon">📐</div>
+        <div class="receive-icon">📦</div>
         <div class="receive-text">
-          <strong>Vários tamanhos</strong>
-          <span>P, M e G pra diferentes tipos de produto</span>
-        </div>
-      </div>
-      <div class="receive-item">
-        <div class="receive-icon">🖨️</div>
-        <div class="receive-text">
-          <strong>Impressora comum</strong>
-          <span>Funciona com jato de tinta ou laser</span>
+          <strong>Caixinhas, toppers, topos de bolo, sacolinhas, rótulos, bandeirolas, lembrancinhas</strong>
+          <span>Kit completo pra qualquer festa</span>
         </div>
       </div>
       <div class="receive-item">
         <div class="receive-icon">✏️</div>
         <div class="receive-text">
-          <strong>Editável no Canva</strong>
-          <span>Abra, troque cores e textos, e imprima</span>
+          <strong>Editável no Canva, CorelDraw e Silhouette Studio</strong>
+          <span>Use o programa que você já conhece</span>
+        </div>
+      </div>
+      <div class="receive-item">
+        <div class="receive-icon">🖨️</div>
+        <div class="receive-text">
+          <strong>Funciona com impressora comum</strong>
+          <span>Jato de tinta ou laser, sem equipamento especial</span>
         </div>
       </div>
     </div>
@@ -1089,19 +1129,28 @@ h3 { font-size: 1.125rem; font-weight: 700; }
     <h2>Como funciona</h2>
     <div class="steps">
       <div class="step">
-        <div class="step-icon">📥</div>
-        <h3>Baixe os moldes</h3>
-        <p>Acesso imediato após a compra. Todos os moldes organizados em um só lugar.</p>
+        <div class="step-content">
+          <div class="step-number">1</div>
+          <h3>Escolha o tema</h3>
+          <p>Navegue pelos temas e encontre o que o cliente pediu. Tudo organizado por categoria.</p>
+        </div>
+        <img src="images/passo1-molde.png" alt="Molde planificado de caixinha de kit festa" class="step-img" loading="lazy">
       </div>
       <div class="step">
-        <div class="step-icon">🎨</div>
-        <h3>Personalize no Canva</h3>
-        <p>Troque cores, adicione o nome do cliente e deixe do seu jeito em minutos.</p>
+        <div class="step-content">
+          <div class="step-number">2</div>
+          <h3>Personalize no Canva/Corel</h3>
+          <p>Troque cores, nomes e textos. Deixe do jeito que o cliente quer em minutos.</p>
+        </div>
+        <img src="images/passo2-impressora.png" alt="Molde de kit festa saindo da impressora" class="step-img" loading="lazy">
       </div>
       <div class="step">
-        <div class="step-icon">✨</div>
-        <h3>Imprima e entregue</h3>
-        <p>Use sua impressora comum. Recorte, dobre e entregue junto com seu produto.</p>
+        <div class="step-content">
+          <div class="step-number">3</div>
+          <h3>Imprima e monte</h3>
+          <p>Use sua impressora comum, recorte, dobre e entregue. Simples assim.</p>
+        </div>
+        <img src="images/passo3-montado.png" alt="Kit festa montado na mesa pronto pra entregar" class="step-img" loading="lazy">
       </div>
     </div>
   </div>
@@ -1136,6 +1185,7 @@ h3 { font-size: 1.125rem; font-weight: 700; }
         <div class="compat-card-title">💻 PROGRAMAS E MÁQUINAS COMPATÍVEIS</div>
         <div class="compat-tags">
           <span class="compat-tag">Canva</span>
+          <span class="compat-tag">CorelDraw</span>
           <span class="compat-tag">Silhouette Studio</span>
           <span class="compat-tag">Cricut Design Space</span>
         </div>
@@ -1143,7 +1193,7 @@ h3 { font-size: 1.125rem; font-weight: 700; }
     </div>
 
     <div class="compat-footer">
-      ✅ Se você já tem impressora, seja comum ou de papelaria, já pode começar hoje. Baixe os moldes, abra no programa que você já usa e comece a montar suas sacolas imediatamente.
+      ✅ Se você já tem impressora, seja comum ou de papelaria, já pode começar hoje. Baixe os moldes, abra no programa que você já usa e comece a montar seus kits festa imediatamente.
     </div>
   </div>
 </section>
@@ -1154,48 +1204,48 @@ h3 { font-size: 1.125rem; font-weight: 700; }
      ================================================ -->
 <section class="section section--alt fade-in" id="vantagens">
   <div class="container container--wide">
-    <h2>Por que empreendedoras estão usando esse kit</h2>
+    <h2>Por que usar esse acervo de moldes</h2>
     <div class="benefits-grid">
       <div class="benefit-card">
         <span class="benefit-icon">🔒</span>
         <div>
           <h3>Nunca mais perca uma venda</h3>
-          <p>Tenha opção pronta pra qualquer pedido, na hora que o cliente perguntar.</p>
+          <p>Tenha o tema pronto na hora que o cliente pedir. Sem desculpa, sem demora.</p>
         </div>
       </div>
       <div class="benefit-card">
         <span class="benefit-icon">⚡</span>
         <div>
           <h3>Personalize em minutos</h3>
-          <p>Abra o molde no Canva, troque o que quiser e mande imprimir. Sem começar do zero.</p>
+          <p>Abra o molde, troque o que quiser, mande imprimir. Sem começar do zero.</p>
         </div>
       </div>
       <div class="benefit-card">
         <span class="benefit-icon">📦</span>
         <div>
-          <h3>Entregue mais pedidos no mesmo dia</h3>
-          <p>Tempo que você gastava montando embalagem agora é tempo produzindo e vendendo.</p>
+          <h3>Atenda mais pedidos no mesmo dia</h3>
+          <p>Tempo que gastava criando do zero agora é tempo montando e vendendo.</p>
         </div>
       </div>
       <div class="benefit-card">
         <span class="benefit-icon">💰</span>
         <div>
           <h3>Produza por centavos, venda com margem</h3>
-          <p>Uma folha de papel custa centavos. O cliente paga mais por embalagem bonita.</p>
+          <p>Uma folha de papel custa centavos. O cliente paga bem por kit festa bonito.</p>
         </div>
       </div>
       <div class="benefit-card">
         <span class="benefit-icon">📂</span>
         <div>
-          <h3>Tudo organizado em um só lugar</h3>
-          <p>Chega de arquivo solto. Os moldes estão separados por categoria e tamanho.</p>
+          <h3>Tudo organizado por tema</h3>
+          <p>Chega de arquivo solto. Moldes separados por categoria pra achar rápido.</p>
         </div>
       </div>
       <div class="benefit-card">
-        <span class="benefit-icon">❤️</span>
+        <span class="benefit-icon">🎂</span>
         <div>
-          <h3>Moldes pra todo tipo de produto</h3>
-          <p>Sacolas pra doces, cosméticos, artesanato, lembrancinhas, kits e muito mais.</p>
+          <h3>Moldes pra todo tipo de festa</h3>
+          <p>Infantil, adulto, chá de bebê, aniversário, batizado e muito mais.</p>
         </div>
       </div>
     </div>
@@ -1208,14 +1258,14 @@ h3 { font-size: 1.125rem; font-weight: 700; }
      ================================================ -->
 <section class="section fade-in" id="ideal">
   <div class="container">
-    <h2>Esse kit é ideal pra você que…</h2>
+    <h2>Esse acervo é ideal pra você que…</h2>
     <ul class="ideal-list">
-      <li><span class="ideal-check">&#10003;</span>Já vende seu produto mas ainda entrega em saco genérico ou embalagem sem graça</li>
-      <li><span class="ideal-check">&#10003;</span>Perde tempo montando embalagem no Canva em vez de estar produzindo</li>
-      <li><span class="ideal-check">&#10003;</span>Quer entregar mais rápido sem perder qualidade na apresentação</li>
-      <li><span class="ideal-check">&#10003;</span>Quer que a embalagem valorize seu produto e te permita cobrar mais</li>
-      <li><span class="ideal-check">&#10003;</span>Já perdeu venda ou cliente por não ter embalagem pronta pra mostrar na hora</li>
-      <li><span class="ideal-check">&#10003;</span>Precisa de moldes profissionais sem pagar caro por design</li>
+      <li><span class="ideal-check">&#10003;</span>Já trabalha com kit festa mas perde pedido por não ter o tema que pediram</li>
+      <li><span class="ideal-check">&#10003;</span>Perde horas montando molde no Canva em vez de estar produzindo</li>
+      <li><span class="ideal-check">&#10003;</span>Quer atender mais rápido sem perder qualidade</li>
+      <li><span class="ideal-check">&#10003;</span>Quer ampliar o acervo de temas pra oferecer mais opções ao cliente</li>
+      <li><span class="ideal-check">&#10003;</span>Tá começando na papelaria e quer ter moldes profissionais sem criar do zero</li>
+      <li><span class="ideal-check">&#10003;</span>Quer aceitar pedidos de qualquer tema com segurança</li>
     </ul>
   </div>
 </section>
@@ -1226,13 +1276,13 @@ h3 { font-size: 1.125rem; font-weight: 700; }
      ================================================ -->
 <section class="section section--alt fade-in" id="bonus">
   <div class="container">
-    <h2>Bônus incluídos no seu kit</h2>
+    <h2>Bônus incluídos no Plano Completo</h2>
     <div class="bonus-stack">
 
       <div class="bonus-card">
         <div class="bonus-label">Bônus 1</div>
-        <h3>Planilha de Precificação Inteligente</h3>
-        <p>Saiba exatamente quanto cobrar pelo seu produto com margem de lucro real. Preencha os custos e a planilha calcula tudo pra você.</p>
+        <h3>Coleção de Convites Editáveis</h3>
+        <p>Modelos de convites prontos pra personalizar no Canva. Troque nome, data, endereço e mande imprimir ou envie digital.</p>
         <div class="bonus-price">
           <span class="price-old">De R$37</span>
           <span class="badge badge--free">GRÁTIS HOJE</span>
@@ -1241,8 +1291,8 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 
       <div class="bonus-card">
         <div class="bonus-label">Bônus 2</div>
-        <h3>Coleção Especial para Datas Comemorativas</h3>
-        <p>Moldes exclusivos prontos pra Natal, Páscoa, Dia das Mães, Dia dos Namorados e outras datas que mais vendem no ano.</p>
+        <h3>Coleção Especial Datas Comemorativas</h3>
+        <p>Moldes prontos pra Natal, Páscoa, Dia das Mães, Festa Junina e mais. As datas que mais vendem no ano, prontas pra você.</p>
         <div class="bonus-price">
           <span class="price-old">De R$47</span>
           <span class="badge badge--free">GRÁTIS HOJE</span>
@@ -1251,8 +1301,8 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 
       <div class="bonus-card">
         <div class="bonus-label">Bônus 3</div>
-        <h3>Modelos para Brindes e Lembrancinhas</h3>
-        <p>Sacolas prontas pra montar kits, brindes de empresas e lembrancinhas de festa. Uma fonte extra de renda pra você.</p>
+        <h3>Modelos de Lembrancinhas e Brindes</h3>
+        <p>Caixinhas e lembrancinhas prontas pra batizado, chá de bebê, aniversário. Uma fonte extra de renda pra você.</p>
         <div class="bonus-price">
           <span class="price-old">De R$29</span>
           <span class="badge badge--free">GRÁTIS HOJE</span>
@@ -1265,7 +1315,7 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 
 <!-- CTA intermediário -->
 <div class="cta-wrap">
-  <a href="#planos" class="btn scroll-to-plans">GARANTIR MEU KIT AGORA</a>
+  <a href="#planos" class="btn scroll-to-plans">GARANTIR MEU ACERVO AGORA</a>
 </div>
 
 
@@ -1274,12 +1324,12 @@ h3 { font-size: 1.125rem; font-weight: 700; }
      ================================================ -->
 <section class="section section--alt fade-in" id="depoimentos">
   <div class="container container--wide">
-    <h2>O que estão dizendo sobre o kit</h2>
+    <h2>O que estão dizendo sobre o acervo</h2>
     <div class="social-proof-grid">
-      <img src="social-1.jpeg" alt="Depoimento de cliente no WhatsApp" loading="lazy">
+      <img src="social-1.jpeg?v=2" alt="Depoimento de cliente no WhatsApp" loading="lazy">
       <img src="social-4.jpeg" alt="Depoimento de cliente no WhatsApp" loading="lazy">
       <img src="social-3.jpeg" alt="Depoimento de cliente no WhatsApp" loading="lazy">
-      <img src="social-2.jpeg" alt="Depoimento de cliente no WhatsApp" loading="lazy">
+      <img src="social-2.jpeg?v=2" alt="Depoimento de cliente no WhatsApp" loading="lazy">
     </div>
   </div>
 </section>
@@ -1309,10 +1359,9 @@ h3 { font-size: 1.125rem; font-weight: 700; }
       <!-- PLANO BÁSICO -->
       <div class="plan-card">
         <div class="plan-name">Plano Básico</div>
-        <img src="plano-basico.png" alt="Conteúdo do Plano Básico" class="plan-img" loading="lazy">
+        <img src="images/plano-basico.png" alt="Conteúdo do Plano Básico" class="plan-img" loading="lazy">
         <ul class="plan-features">
-          <li>+300 moldes de embalagens prontos</li>
-          <li>Planilha de Precificação Inteligente</li>
+          <li>+8.000 moldes de kit festa prontos</li>
           <li>Garantia de 7 dias</li>
         </ul>
         <div class="plan-price">
@@ -1321,20 +1370,19 @@ h3 { font-size: 1.125rem; font-weight: 700; }
         </div>
         <!-- LINK CHECKOUT: trocar href abaixo -->
         <a href="https://ggcheckout.app/checkout/v5/VMA6lKH4IKTVhnbzPZR7" class="btn btn--outline btn--sm" id="btnBasico" target="_blank" rel="noopener">QUERO O PLANO BÁSICO</a>
-        <div class="plan-upsell-hint">👇 Adquira o Plano Mais Comprado com 80% de Desconto Abaixo! 👇</div>
+        <div class="plan-upsell-hint">👇 Adquira o Plano Mais Comprado com 70% de Desconto Abaixo! 👇</div>
       </div>
 
       <!-- PLANO COMPLETO (destaque) -->
       <div class="plan-card plan-card--featured">
         <span class="plan-badge badge">MAIS ESCOLHIDO</span>
         <div class="plan-name">Plano Completo</div>
-        <img src="plano-completo.png" alt="Conteúdo do Plano Completo" class="plan-img" loading="lazy">
+        <img src="images/plano-completo.png" alt="Conteúdo do Plano Completo" class="plan-img" loading="lazy">
         <ul class="plan-features">
-          <li>+300 moldes de embalagens prontos</li>
-          <li>Planilha de Precificação Inteligente</li>
-          <li>Videoaula Passo a Passo de Montagem</li>
-          <li>Coleção Especial para Datas Comemorativas</li>
-          <li>Modelos para Brindes e Lembrancinhas</li>
+          <li>+8.000 moldes de kit festa prontos</li>
+          <li>Coleção de Convites Editáveis</li>
+          <li>Coleção Especial Datas Comemorativas</li>
+          <li>Modelos de Lembrancinhas e Brindes</li>
           <li>Acesso vitalício</li>
           <li>Garantia de 7 dias</li>
         </ul>
@@ -1360,31 +1408,12 @@ h3 { font-size: 1.125rem; font-weight: 700; }
       <div class="guarantee-shield">&#10003;</div>
       <div>
         <h2 style="text-align:left;margin-bottom:0.75rem">Garantia incondicional de 7 dias</h2>
-        <p>Você tem 7 dias completos pra testar o Kit de Moldes. Se por qualquer motivo não ficar satisfeita, é só enviar um e-mail e devolvemos 100% do seu dinheiro. Sem perguntas e sem burocracia. O risco é todo nosso.</p>
+        <p>Você tem 7 dias completos pra testar o Acervo de Moldes. Se por qualquer motivo não ficar satisfeita, é só enviar um e-mail e devolvemos 100% do seu dinheiro. Sem perguntas e sem burocracia. O risco é todo nosso.</p>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- ================================================
-     QUEM SOU EU — criadora do kit
-     ================================================ -->
-<section class="section fade-in" id="sobre">
-  <div class="container">
-    <div class="about-content">
-      <img src="foto-criadora.webp" alt="Amanda — criadora do kit" class="about-photo" loading="lazy">
-      <div>
-        <span class="eyebrow">Quem criou esse kit</span>
-        <h2 style="text-align:left;margin-bottom:0.75rem">Amanda</h2>
-        <p class="text-muted">Meu nome é Amanda, tenho 34 anos e vendo produtos artesanais há mais de 9 anos. Durante muito tempo eu entregava meus produtos em saquinho genérico ou caixa sem graça. Sabia que o produto era bom, mas a embalagem não acompanhava.</p>
-        <p class="text-muted" style="margin-top:0.75rem">Tentei criar minhas próprias embalagens no Canva, mas cada pedido virava uma batalha: horas ajustando tamanho, formatando, e no final nem ficava tão bonito assim. Teve cliente que desistiu porque eu não tinha nada pronto pra mostrar na hora. Um tempo que eu podia estar produzindo ou vendendo.</p>
-        <p class="text-muted" style="margin-top:0.75rem">Foi aí que comecei a montar meus próprios moldes. Organizei tudo por categoria, tamanho e ocasião. Com minha impressora comum, passei a entregar em minutos embalagens que pareciam de loja. E minhas clientes começaram a valorizar muito mais o que eu vendia. Decidi compartilhar com outras empreendedoras que passam pela mesma coisa.</p>
-        <p class="about-highlight" style="margin-top:1rem">Esse pack não veio de curso. Veio da bancada.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- CTA intermediário -->
 <div class="cta-wrap">
@@ -1402,10 +1431,10 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
-          <span>Preciso ter experiência com Canva para usar os moldes?</span>
+          <span>Preciso saber mexer no Canva?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Não precisa! Os moldes já vêm prontos e organizados. Você abre no Canva, troca o nome do cliente e as cores e manda imprimir. É simples até pra quem nunca usou o Canva antes.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Não! Os moldes são simples de editar. Você abre, troca nome, cores e textos e manda imprimir. É intuitivo até pra quem nunca usou o Canva antes.</div></div>
       </div>
 
       <div class="faq-item">
@@ -1413,39 +1442,39 @@ h3 { font-size: 1.125rem; font-weight: 700; }
           <span>Funciona com impressora comum?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Sim! Todos os moldes foram pensados pra impressora jato de tinta ou laser comum, em papel sulfite ou cartão. Não precisa de nenhum equipamento especial.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Sim! Todos os moldes foram pensados pra impressora jato de tinta ou laser comum, em papel sulfite, cartão ou couché. Não precisa de nenhum equipamento especial.</div></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
-          <span>Como vou receber os moldes após a compra?</span>
+          <span>Como recebo os moldes?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Acesso imediato! Assim que o pagamento é confirmado, você recebe o link direto no seu e-mail. Tudo em um só lugar, organizado por categoria.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Acesso imediato após o pagamento! É um produto 100% digital. Assim que o pagamento é confirmado, você recebe o link de acesso direto no seu e-mail.</div></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
-          <span>O acesso tem prazo pra expirar?</span>
+          <span>O acesso expira?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Não. No Plano Completo o acesso é vitalício. Você entra quando quiser, pra sempre, sem pagar nada a mais. No Plano Básico o acesso também não expira.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">No Plano Básico o acesso é limitado. No Plano Completo o acesso é vitalício — você entra quando quiser, pra sempre, sem pagar nada a mais.</div></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
-          <span>Serve pra qualquer tipo de produto?</span>
+          <span>Serve pra qualquer tipo de festa?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Sim! Os moldes têm vários tamanhos e modelos que servem pra doces, cosméticos artesanais, lembrancinhas, artesanato, kits e presentes. Se você vende algum produto físico e quer melhorar a apresentação, esse kit é pra você.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Sim! O acervo tem moldes pra festa infantil, adulto, chá de bebê, batizado, aniversário e muito mais. São mais de 8.000 moldes organizados por tema.</div></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
-          <span>E se eu não gostar? Tem garantia?</span>
+          <span>Tem garantia?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Tem sim! Você tem 7 dias completos pra testar. Se por qualquer motivo não gostar, é só avisar e devolvemos 100% do seu dinheiro. Sem perguntas e sem burocracia.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Tem sim! Garantia de 7 dias, 100% do dinheiro de volta. Se por qualquer motivo não gostar, é só avisar e devolvemos tudo. Sem perguntas e sem burocracia.</div></div>
       </div>
 
       <div class="faq-item">
@@ -1453,7 +1482,15 @@ h3 { font-size: 1.125rem; font-weight: 700; }
           <span>Qual a diferença entre o Plano Básico e o Completo?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">O Plano Básico traz os +300 moldes e a planilha de precificação. O Plano Completo inclui tudo isso mais a videoaula passo a passo de montagem, a coleção especial para datas comemorativas e os modelos para brindes e lembrancinhas, com acesso vitalício.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">O Plano Básico traz os +8.000 moldes de kit festa. O Plano Completo inclui tudo isso mais os 3 bônus exclusivos (Convites Editáveis, Datas Comemorativas e Lembrancinhas) e acesso vitalício.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>Funciona no CorelDraw e Silhouette?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Sim! Os moldes são compatíveis com Canva, CorelDraw, Silhouette Studio e Cricut Design Space. Use o programa que você já conhece.</div></div>
       </div>
 
     </div>
@@ -1466,7 +1503,7 @@ h3 { font-size: 1.125rem; font-weight: 700; }
      ================================================ -->
 <footer class="footer">
   <div class="container">
-    <p>&copy; 2026 Kit de Moldes de Embalagens Personalizadas. Todos os direitos reservados.</p>
+    <p>&copy; 2026 Acervo de Moldes para Kit Festa. Todos os direitos reservados.</p>
     <p style="margin-top:0.375rem;font-size:0.75rem;opacity:0.7">Este produto é vendido pela internet e entregue de forma 100% digital.</p>
   </div>
 </footer>
@@ -1596,28 +1633,6 @@ h3 { font-size: 1.125rem; font-weight: 700; }
     slides.forEach(function(s) { observer.observe(s); });
   }
 
-  setupDots('previewCarousel', 'previewDots');
-
-  /* ── Auto-rotação do carrossel de prévia ── */
-  var previewTrack = document.getElementById('previewCarousel');
-  var previewSlides = previewTrack.querySelectorAll('.carousel-slide');
-  var autoIdx = 0;
-  var autoTimer;
-
-  function autoAdvance() {
-    autoIdx = (autoIdx + 1) % previewSlides.length;
-    var slide = previewSlides[autoIdx];
-    previewTrack.scrollTo({ left: slide.offsetLeft - previewTrack.offsetLeft, behavior: 'smooth' });
-  }
-  function startAuto() { autoTimer = setInterval(autoAdvance, 6000); }
-  function stopAuto() { clearInterval(autoTimer); }
-
-  startAuto();
-
-  previewTrack.addEventListener('pointerdown', function() {
-    stopAuto();
-    setTimeout(startAuto, 6000);
-  }, { passive: true });
 
   /* ── Fade-in ao rolar (IntersectionObserver) ── */
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
