@@ -1626,10 +1626,9 @@ h3 { font-size: 1.125rem; font-weight: 700; }
     document.body.style.overflow = '';
   }
 
-  document.getElementById('popupClose').addEventListener('click', hidePopup);
-  document.getElementById('popupBasic').addEventListener('click', hidePopup);
-  popup.addEventListener('click', function(e) {
-    if (e.target === popup) hidePopup();
+  document.getElementById('popupClose').addEventListener('click', function() {
+    hidePopup();
+    window.open('https://ggcheckout.app/checkout/v5/VMA6lKH4IKTVhnbzPZR7', '_blank');
   });
 
   document.getElementById('btnBasico').addEventListener('click', function(e) {
