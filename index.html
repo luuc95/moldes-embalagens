@@ -698,6 +698,14 @@ h3 { font-size: 1.125rem; font-weight: 700; }
   font-weight: 700;
   flex-shrink: 0;
 }
+.plan-features li.no-bonus {
+  opacity: 0.55;
+  text-decoration: line-through;
+}
+.plan-features li.no-bonus::before {
+  content: "✗";
+  color: #c0392b;
+}
 .plan-upsell-hint {
   margin-top: 1rem;
   background: var(--brand-light);
@@ -1401,6 +1409,10 @@ h3 { font-size: 1.125rem; font-weight: 700; }
         <ul class="plan-features">
           <li>+8.000 moldes de kit festa prontos</li>
           <li>Garantia de 7 dias</li>
+          <li class="no-bonus">Sem Convites Editáveis</li>
+          <li class="no-bonus">Sem Coleção Datas Comemorativas</li>
+          <li class="no-bonus">Sem Lembrancinhas e Brindes</li>
+          <li class="no-bonus">Sem acesso vitalício</li>
         </ul>
         <div class="plan-price">
           <span class="price-old">De R$37</span><br>
