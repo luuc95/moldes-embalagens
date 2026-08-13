@@ -3,37 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" as="image" href="images/hero-logo.webp" type="image/webp" fetchpriority="high">
 <title>Acervo de Moldes para Kit Festa | +8.000 Moldes Prontos pra Editar e Imprimir</title>
 <meta name="description" content="Mais de 8.000 moldes de kit festa prontos pra editar no Canva, CorelDraw ou Silhouette, personalizar em minutos e imprimir. Caixinhas, toppers, convites, sacolinhas, rótulos, bandeirolas, topos de bolo e mais. Kit festa infantil e adulto.">
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1707233087085846');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1707233087085846&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "xrkbsuj688");
-</script>
-<!-- Utmify Pixel -->
-<script>window.pixelId = "6a639c32e240907f0143d2ce";</script>
-<script async defer src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"></script>
-<!-- Utmify UTMs -->
-<script async defer src="https://cdn.utmify.com.br/scripts/utms/latest.js"></script>
 <style>
 /* ================================================
    TOKENS
@@ -249,14 +221,14 @@ h3 { font-size: 1.125rem; font-weight: 700; }
   background: linear-gradient(180deg, var(--brand-light) 0%, var(--bg-alt) 60%, var(--bg) 100%);
 }
 .hero h1 { margin-bottom: 1rem; }
-.hero-banner {
+.hero-img-wrap {
+  width: 180px;
+  margin: 1.5rem auto;
+}
+.hero-img-wrap img {
   display: block;
   width: 100%;
-  max-width: 700px;
   height: auto;
-  aspect-ratio: 1/1;
-  margin: 1.5rem auto;
-  border-radius: 14px;
 }
 .hero .sub {
   font-size: 1.0625rem;
@@ -315,14 +287,18 @@ h3 { font-size: 1.125rem; font-weight: 700; }
   overflow: hidden;
   width: 100%;
   padding: 0;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+.infinite-carousel.dragging {
+  cursor: grabbing;
 }
 .infinite-track {
   display: flex;
   width: max-content;
-  animation: scroll-carousel 50s linear infinite;
-}
-.infinite-carousel:hover .infinite-track {
-  animation-play-state: paused;
+  will-change: transform;
 }
 .infinite-track img {
   height: 280px;
@@ -332,10 +308,7 @@ h3 { font-size: 1.125rem; font-weight: 700; }
   flex-shrink: 0;
   margin-right: 16px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-@keyframes scroll-carousel {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  pointer-events: none;
 }
 
 /* ================================================
@@ -556,38 +529,63 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 /* ================================================
    SEÇÃO: DEPOIMENTOS (carrossel de prints)
    ================================================ */
-.social-proof-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  max-width: 1100px;
-  margin: 0 auto;
+.social-carousel {
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
 }
-.social-proof-grid img {
+.social-carousel.dragging {
+  cursor: grabbing;
+}
+.social-track {
+  display: flex;
+  transition: transform 0.35s ease;
+}
+.social-carousel.dragging .social-track {
+  transition: none;
+}
+.social-slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+}
+.social-slide img {
   width: 100%;
+  max-width: 300px;
   height: auto;
   aspect-ratio: 400/867;
   border-radius: 14px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  pointer-events: none;
+}
+.social-dots {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+.social-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  padding: 0;
   cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
 }
-.social-proof-grid img:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+.social-dot.active {
+  background: var(--brand);
+  transform: scale(1.2);
 }
-@media (max-width: 768px) {
-  .social-proof-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+@media (min-width: 768px) {
+  .social-slide {
+    flex: 0 0 50%;
   }
-}
-@media (max-width: 420px) {
-  .social-proof-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-  }
-  .social-proof-grid img { border-radius: 10px; }
 }
 
 /* ================================================
@@ -994,7 +992,6 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 
 @media (prefers-reduced-motion: reduce) {
   .btn::after { animation: none; }
-  .infinite-track { animation: none; }
   .fade-in { opacity: 1; transform: none; transition: none; }
   .faq-answer { transition: none; }
   .faq-icon { transition: none; }
@@ -1064,9 +1061,11 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 <section class="hero" id="topo">
   <div class="container text-center">
     <span class="eyebrow">Acervo de Moldes para Kit Festa</span>
-    <h1>Tenha um Acervo Completo de Moldes de Kit Festa pra Atender Qualquer Tema que o Cliente Pedir</h1>
-    <img src="images/plano-completo.webp" alt="Acervo de +8.000 moldes de kit festa personalizados" class="hero-banner" width="700" height="700" fetchpriority="high">
-    <p class="sub">+8.000 moldes de kit festa prontos pra editar no Canva, imprimir e entregar — sem criar nada do zero.</p>
+    <h1>+8.000 Moldes de Kit Festa pra Atender Qualquer Tema que o Cliente Pedir</h1>
+    <p class="sub">Moldes prontos pra editar no Canva, imprimir e entregar — sem criar nada do zero.</p>
+    <div class="hero-img-wrap">
+      <img src="images/hero-logo.webp" alt="Acervo de Moldes - Logo AM" width="600" height="600" fetchpriority="high" decoding="async">
+    </div>
     <a href="#planos" class="btn scroll-to-plans">QUERO MEUS MOLDES AGORA</a>
   </div>
 </section>
@@ -1373,11 +1372,14 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 <section class="section section--alt fade-in" id="depoimentos">
   <div class="container container--wide">
     <h2>O que estão dizendo sobre o acervo</h2>
-    <div class="social-proof-grid">
-      <img src="social-1.webp" alt="Depoimento de cliente no WhatsApp" width="400" height="867" loading="lazy">
-      <img src="social-4.webp" alt="Depoimento de cliente no WhatsApp" width="400" height="867" loading="lazy">
-      <img src="social-3.webp" alt="Depoimento de cliente no WhatsApp" width="400" height="867" loading="lazy">
-      <img src="social-2.webp" alt="Depoimento de cliente no WhatsApp" width="400" height="867" loading="lazy">
+    <div class="social-carousel" id="socialCarousel">
+      <div class="social-track" id="socialTrack">
+        <div class="social-slide"><img src="social-1.webp" alt="Depoimento de cliente no WhatsApp" width="400" height="867" loading="lazy"></div>
+        <div class="social-slide"><img src="social-4.webp" alt="Depoimento de cliente no WhatsApp" width="400" height="867" loading="lazy"></div>
+        <div class="social-slide"><img src="social-3.webp" alt="Depoimento de cliente no WhatsApp" width="400" height="867" loading="lazy"></div>
+        <div class="social-slide"><img src="social-2.webp" alt="Depoimento de cliente no WhatsApp" width="400" height="867" loading="lazy"></div>
+      </div>
+      <div class="social-dots" id="socialDots"></div>
     </div>
   </div>
 </section>
@@ -1568,7 +1570,7 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 (function() {
   'use strict';
 
-  /* ── Smooth scroll para CTAs ── */
+/* ── Smooth scroll para CTAs ── */
   document.querySelectorAll('.scroll-to-plans').forEach(function(el) {
     el.addEventListener('click', function(e) {
       e.preventDefault();
@@ -1593,7 +1595,9 @@ h3 { font-size: 1.125rem; font-weight: 700; }
       if (!isOpen) {
         item.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
+        requestAnimationFrame(function() {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        });
       }
     });
   });
@@ -1630,9 +1634,6 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 
   /* ── Popup de saída (exit intent) ── */
   var popup = document.getElementById('exitPopup');
-  var popupShown = false;
-  var POPUP_KEY = 'moldes_popup_shown';
-
   function showPopup() {
     popup.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -1652,37 +1653,231 @@ h3 { font-size: 1.125rem; font-weight: 700; }
     showPopup();
   });
 
-  /* ── Carousel dots ── */
-  function setupDots(trackId, dotsId) {
-    var track = document.getElementById(trackId);
-    var dotsContainer = document.getElementById(dotsId);
-    if (!track || !dotsContainer) return;
-    var slides = track.querySelectorAll('.carousel-slide');
-    if (slides.length < 2) return;
+  document.getElementById('popupCta').addEventListener('click', function() {
+    hidePopup();
+  });
 
-    slides.forEach(function(_, i) {
-      var dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-      dot.addEventListener('click', function() {
-        slides[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      });
-      dotsContainer.appendChild(dot);
+  document.getElementById('popupBasic').addEventListener('click', function() {
+    hidePopup();
+  });
+
+  /* ── Carrossel infinito com arraste manual ── */
+  (function() {
+    var carousel = document.querySelector('.infinite-carousel');
+    var track = document.querySelector('.infinite-track');
+    if (!carousel || !track) return;
+
+    var imgs = track.querySelectorAll('img');
+    var halfCount = imgs.length / 2;
+    var offset = 0;
+    var autoSpeed = -0.5;
+    var velocity = 0;
+    var isDragging = false;
+    var startX = 0;
+    var dragStartOffset = 0;
+    var lastX = 0;
+    var lastTime = 0;
+    var autoResumeTimer = null;
+    var paused = false;
+    var halfWidth = 0;
+
+    function measureHalf() {
+      var w = 0;
+      for (var i = 0; i < halfCount; i++) {
+        w += imgs[i].offsetWidth + 16;
+      }
+      halfWidth = w;
+    }
+    requestAnimationFrame(measureHalf);
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(measureHalf, 200);
     });
 
-    var dots = dotsContainer.querySelectorAll('.carousel-dot');
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var idx = Array.prototype.indexOf.call(slides, entry.target);
-          dots.forEach(function(d, j) { d.classList.toggle('active', j === idx); });
+    function wrapOffset() {
+      if (halfWidth <= 0) return;
+      while (offset <= -halfWidth) offset += halfWidth;
+      while (offset > 0) offset -= halfWidth;
+    }
+
+    function applyTransform() {
+      track.style.transform = 'translateX(' + offset + 'px)';
+    }
+
+    function onPointerDown(x) {
+      isDragging = true;
+      paused = true;
+      carousel.classList.add('dragging');
+      startX = x;
+      dragStartOffset = offset;
+      lastX = x;
+      lastTime = Date.now();
+      velocity = 0;
+      if (autoResumeTimer) clearTimeout(autoResumeTimer);
+    }
+
+    function onPointerMove(x) {
+      if (!isDragging) return;
+      var dx = x - startX;
+      offset = dragStartOffset + dx;
+      wrapOffset();
+      applyTransform();
+
+      var now = Date.now();
+      var dt = now - lastTime;
+      if (dt > 0) {
+        velocity = (x - lastX) / dt * 16;
+      }
+      lastX = x;
+      lastTime = now;
+    }
+
+    function onPointerUp() {
+      if (!isDragging) return;
+      isDragging = false;
+      carousel.classList.remove('dragging');
+
+      autoResumeTimer = setTimeout(function() {
+        paused = false;
+        velocity = 0;
+      }, 3000);
+    }
+
+    carousel.addEventListener('mousedown', function(e) {
+      e.preventDefault();
+      onPointerDown(e.clientX);
+    });
+    window.addEventListener('mousemove', function(e) {
+      if (isDragging) onPointerMove(e.clientX);
+    });
+    window.addEventListener('mouseup', onPointerUp);
+
+    carousel.addEventListener('touchstart', function(e) {
+      onPointerDown(e.touches[0].clientX);
+    }, { passive: true });
+    carousel.addEventListener('touchmove', function(e) {
+      onPointerMove(e.touches[0].clientX);
+    }, { passive: true });
+    carousel.addEventListener('touchend', onPointerUp);
+
+    function tick() {
+      if (document.hidden) {
+        requestAnimationFrame(tick);
+        return;
+      }
+      if (halfWidth <= 0) measureHalf();
+      if (!isDragging) {
+        if (paused && Math.abs(velocity) > 0.1) {
+          offset += velocity;
+          velocity *= 0.95;
+        } else if (!paused) {
+          offset += autoSpeed;
         }
-      });
-    }, { root: track, threshold: 0.6 });
+        wrapOffset();
+        applyTransform();
+      }
+      requestAnimationFrame(tick);
+    }
 
-    slides.forEach(function(s) { observer.observe(s); });
-  }
+    applyTransform();
+    requestAnimationFrame(tick);
+  })();
 
+  /* ── Carrossel de depoimentos com arraste ── */
+  (function() {
+    var carousel = document.getElementById('socialCarousel');
+    var track = document.getElementById('socialTrack');
+    var dotsWrap = document.getElementById('socialDots');
+    if (!carousel || !track || !dotsWrap) return;
+
+    var slides = track.querySelectorAll('.social-slide');
+    var total = slides.length;
+    var current = 0;
+    var isDragging = false;
+    var startX = 0;
+    var dragOffset = 0;
+    var slideWidth = 100;
+
+    function getSlidesPerView() {
+      return window.innerWidth >= 768 ? 2 : 1;
+    }
+
+    function getMaxIndex() {
+      return Math.max(0, total - getSlidesPerView());
+    }
+
+    function goTo(idx) {
+      var max = getMaxIndex();
+      current = Math.max(0, Math.min(idx, max));
+      var perView = getSlidesPerView();
+      var pct = current * (100 / perView);
+      track.style.transform = 'translateX(-' + pct + '%)';
+      updateDots();
+    }
+
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      var count = getMaxIndex() + 1;
+      for (var i = 0; i < count; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'social-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Depoimento ' + (i + 1));
+        (function(idx) {
+          dot.addEventListener('click', function() { goTo(idx); });
+        })(i);
+        dotsWrap.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      var dots = dotsWrap.querySelectorAll('.social-dot');
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+    }
+
+    function onDown(x) {
+      isDragging = true;
+      startX = x;
+      dragOffset = 0;
+      carousel.classList.add('dragging');
+    }
+
+    function onMove(x) {
+      if (!isDragging) return;
+      dragOffset = x - startX;
+      var perView = getSlidesPerView();
+      var pct = current * (100 / perView);
+      var dragPct = (dragOffset / carousel.offsetWidth) * 100;
+      track.style.transform = 'translateX(' + (-pct + dragPct) + '%)';
+    }
+
+    function onUp() {
+      if (!isDragging) return;
+      isDragging = false;
+      carousel.classList.remove('dragging');
+      var threshold = carousel.offsetWidth * 0.15;
+      if (dragOffset < -threshold) {
+        goTo(current + 1);
+      } else if (dragOffset > threshold) {
+        goTo(current - 1);
+      } else {
+        goTo(current);
+      }
+    }
+
+    carousel.addEventListener('mousedown', function(e) { e.preventDefault(); onDown(e.clientX); });
+    window.addEventListener('mousemove', function(e) { if (isDragging) onMove(e.clientX); });
+    window.addEventListener('mouseup', onUp);
+    carousel.addEventListener('touchstart', function(e) { onDown(e.touches[0].clientX); }, { passive: true });
+    carousel.addEventListener('touchmove', function(e) { onMove(e.touches[0].clientX); }, { passive: true });
+    carousel.addEventListener('touchend', onUp);
+
+    buildDots();
+    window.addEventListener('resize', function() {
+      buildDots();
+      goTo(Math.min(current, getMaxIndex()));
+    });
+  })();
 
   /* ── Fade-in ao rolar (IntersectionObserver) ── */
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -1706,6 +1901,34 @@ h3 { font-size: 1.125rem; font-weight: 700; }
 
 })();
 </script>
+
+<!-- Tracking scripts — carregados após o conteúdo pra não bloquear renderização -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1707233087085846');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1707233087085846&ev=PageView&noscript=1"
+/></noscript>
+<script>
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "xrkbsuj688");
+</script>
+<script>window.pixelId = "6a639c32e240907f0143d2ce";</script>
+<script async defer src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"></script>
+<script async defer src="https://cdn.utmify.com.br/scripts/utms/latest.js"></script>
 
 </body>
 </html>
